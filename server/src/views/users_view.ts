@@ -5,7 +5,7 @@ export default {
   render(user: User) {
     return {
       id: user.id,
-      username: user.name,
+      username: user.username,
       email: user.email,
       password: user.password,
       orphanages: orphanages_view.renderMany(user.orphanages),

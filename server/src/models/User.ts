@@ -13,13 +13,13 @@ export default class User {
   id: number;
 
   @Column()
-  name: string;
+  username: string;
 
   @Column()
   email: string;
 
   @Column()
-  password: string | null;
+  password: string;
 
   @OneToMany(() => Orphanage, (orphanage) => orphanage.creatorId, {
     cascade: ["insert", "update"],

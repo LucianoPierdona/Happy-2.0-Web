@@ -8,18 +8,22 @@ export default {
   async register(req: Request, res: Response) {
     const { username, email, password } = req.body;
     const userRepository = getRepository(User);
+    console.log(password);
+
+    let hashedPassword =
+      "$2b$05$0WnthlMcqsQljTcH9lQzZu9IZuPGrk5PycdtOJ5XYMrjQhx/qndA.";
 
     const saltRounds = 5;
 
-    const hashedPassword = bcrypt.hash(password, saltRounds, function (
-      err,
-      hash
-    ) {
+    await bcrypt.hash(password, saltRounds, async function (err, hash) {
       if (err) {
         return console.log(err);
       }
 
-      return `${hash}`;
+      console.log(hash);
+      hashedPassword += hash;
+      console.log(hashedPassword);
+      return hashedPassword;
     });
 
     const data = {

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import OrphanagesController from "./controllers/OrphanagesController";
 import multer from "multer";
+import UsersController from "./controllers/UsersController";
 
 // Routes of the application
 import uploadConfig from "./config/upload";
@@ -20,6 +21,9 @@ routes.get("/orphanages/:id", OrphanagesController.show);
 
 // Get all Orphanages
 routes.get("/orphanages", OrphanagesController.index);
+
+// Register an User
+routes.post("/register", UsersController.register);
 
 export default routes;
 
