@@ -3,6 +3,9 @@ import { getRepository } from "typeorm";
 import User from "../models/User";
 import * as Yup from "yup";
 import bcrypt from "bcrypt";
+import Cookie from "js-cookie";
+import jwt from "jsonwebtoken";
+import { config } from "../config/token";
 
 export default {
   async register(req: Request, res: Response) {
@@ -28,6 +31,20 @@ export default {
         password: Yup.string().required(),
       });
 
+      const userToken = await jwt.sign(
+        {
+          username: data.username,
+        },
+        config.secret,
+        {
+          expiresIn: "10d",
+        }
+      );
+
+      if (typeof window !== "undefined") {
+        Cookie.set("token", userToken);
+      }
+
       await schema.validate(data, {
         abortEarly: false,
       });
@@ -50,6 +67,22 @@ export default {
     }
 
     const hash = user.password;
+
+    const userToken = await jwt.sign(
+      {
+        username: user.username,
+      },
+      config.secret,
+      {
+        expiresIn: "10d",
+      }
+    );
+
+    console.log(userToken);
+
+    if (typeof window !== "undefined") {
+      Cookie.set("token", userToken);
+    }
 
     await bcrypt.compare(password, hash).then(function (result) {
       if (!result) {
