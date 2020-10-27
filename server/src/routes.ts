@@ -25,6 +25,9 @@ routes.get("/orphanages", OrphanagesController.index);
 // Register an User
 routes.post("/register", UsersController.register);
 
+// Login an User
+routes.post("/login", UsersController.login);
+
 export default routes;
 
 // {
