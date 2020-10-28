@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import Cookie from "js-cookie";
 import api from "../services/api";
@@ -9,12 +9,23 @@ import { config } from "../utils/config";
 import logoImg from "../assets/Logotipo.svg";
 
 import "../styles/pages/login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 const Login = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [enableButton, setEnableButton] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    email.length > 0 && email.includes("@")
+      ? setEnableButton(true)
+      : setEnableButton(false);
+    password.length > 0 ? setEnableButton(true) : setEnableButton(false);
+  }, [email, password]);
 
   const onFormSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -24,18 +35,29 @@ const Login = () => {
       password,
     };
 
-    api.post("/login", data).then(async (res) => {
-      const userToken = await jwt.sign(
-        {
-          username: data.email,
-        },
-        config.secret,
-        {
-          expiresIn: "10d",
+    console.log(rememberMe);
+    api
+      .post("/login", data)
+      .then(async (res) => {
+        const userToken = await jwt.sign(
+          {
+            username: data.email,
+          },
+          config.secret,
+          {
+            expiresIn: rememberMe ? "10d" : "1d",
+          }
+        );
+        setErrorMessage("");
+        await Cookie.set("token", userToken);
+        history.push("/");
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+          setErrorMessage("usuário e/ou senha errados.");
         }
-      );
-      Cookie.set("token", userToken);
-    });
+      });
   };
 
   return (
@@ -69,12 +91,19 @@ const Login = () => {
           />
           <div className="subtitles">
             <div>
-              <input type="checkbox" name="remember" />
+              <input
+                type="checkbox"
+                name="remember"
+                onClick={() => {
+                  setRememberMe(!rememberMe);
+                }}
+              />
               <label htmlFor="remember">Lembrar-me</label>
             </div>
             <Link to="/">Esqueci a Senha</Link>
           </div>
-          <button type="submit" disabled onClick={onFormSubmit}>
+          <p className="error">{errorMessage ? errorMessage : null}</p>
+          <button type="submit" disabled={!enableButton} onClick={onFormSubmit}>
             Enviar
           </button>
         </form>

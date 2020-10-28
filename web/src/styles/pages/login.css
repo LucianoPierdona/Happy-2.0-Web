@@ -131,6 +131,14 @@ div {
   color: #8fa7b3;
 }
 
+.banner-right form .error {
+  margin: 10px 0 2px 0;
+  color: #ff000d;
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+}
+
 .banner-right form button {
   margin-top: 15px;
   width: 100%;
@@ -141,8 +149,11 @@ div {
   height: 64px;
   font-size: 16px;
   line-height: 21.82px;
+  cursor: pointer;
+  outline: none;
 }
 
 .banner-right form button:disabled {
   opacity: 0.7;
+  cursor: not-allowed;
 }
