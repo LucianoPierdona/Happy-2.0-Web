@@ -1,0 +1,38 @@
+div {
+  display: flex;
+}
+
+.banner-left {
+  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+  width: 70%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-left img {
+  margin-bottom: 60px;
+}
+
+.banner-left .location {
+  flex-direction: column;
+  text-align: center;
+}
+
+.banner-left .location strong {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 800;
+  font-family: Nunito;
+}
+
+.banner-left .location p {
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.banner-right {
+  width: 50%;
+  background: #fff;
+}
