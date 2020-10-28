@@ -3,9 +3,12 @@ import "../styles/pages/landing.css";
 import { FiArrowRight } from "react-icons/fi";
 import logoImg from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
+import Cookie from "js-cookie";
 
 // Initial Page
 const Landing = () => {
+  const token = Cookie.get("token");
+
   return (
     <div id="page-landing">
       <div className="content-wrapper">
@@ -22,7 +25,11 @@ const Landing = () => {
         </main>
 
         <div className="restricted-access">
-          <Link to="/">Acesso Restrito</Link>
+          {token ? (
+            <Link to="/">Acesso Restrito</Link>
+          ) : (
+            <Link to="/login">Entrar</Link>
+          )}
         </div>
 
         <Link to="/map" className="enter-app">
