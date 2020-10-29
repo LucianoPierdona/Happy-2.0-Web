@@ -5,9 +5,16 @@ import logoImg from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import Cookie from "js-cookie";
 
+import jwt from "jsonwebtoken";
+
 // Initial Page
 const Landing = () => {
-  const token = Cookie.get("token");
+  const token = Cookie.getJSON("token");
+
+  console.log(jwt.decode(token));
+
+  console.log(token, "SJOSNON");
+  console.log(Cookie.getJSON("token"));
 
   return (
     <div id="page-landing">

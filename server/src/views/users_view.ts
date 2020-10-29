@@ -1,5 +1,4 @@
 import User from "../models/User";
-import orphanages_view from "./orphanages_view";
 
 export default {
   render(user: User) {
@@ -8,7 +7,6 @@ export default {
       username: user.username,
       email: user.email,
       password: user.password,
-      orphanages: orphanages_view.renderMany(user.orphanages),
     };
   },
 };

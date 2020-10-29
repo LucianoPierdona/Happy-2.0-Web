@@ -28,6 +28,9 @@ routes.post("/register", UsersController.register);
 // Login an User
 routes.post("/login", UsersController.login);
 
+// Get an User
+routes.get("/user/:email", UsersController.show);
+
 export default routes;
 
 // {

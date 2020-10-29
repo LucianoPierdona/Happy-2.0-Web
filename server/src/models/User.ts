@@ -5,7 +5,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import Orphanage from "./Orphanage";
 
 @Entity("users")
 export default class User {
@@ -20,10 +19,4 @@ export default class User {
 
   @Column()
   password: string;
-
-  @OneToMany(() => Orphanage, (orphanage) => orphanage.creatorId, {
-    cascade: ["insert", "update"],
-  })
-  @JoinColumn({ name: "creatorId" })
-  orphanages: Orphanage[];
 }

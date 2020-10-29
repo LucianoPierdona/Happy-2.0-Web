@@ -3,9 +3,9 @@ import { getRepository } from "typeorm";
 import User from "../models/User";
 import * as Yup from "yup";
 import bcrypt from "bcrypt";
-// import Cookie from "js-cookie";
-// import jwt from "jsonwebtoken";
-import { config } from "../config/token";
+
+import Cookie from "js-cookie";
+import jwt from "jsonwebtoken";
 
 export default {
   async register(req: Request, res: Response) {
@@ -31,16 +31,6 @@ export default {
         password: Yup.string().required(),
       });
 
-      // const userToken = await jwt.sign(
-      //   {
-      //     username: data.username,
-      //   },
-      //   config.secret,
-      //   {
-      //     expiresIn: "10d",
-      //   }
-      // );
-
       await schema.validate(data, {
         abortEarly: false,
       });
@@ -64,22 +54,6 @@ export default {
 
     const hash = user.password;
 
-    // const userToken = await jwt.sign(
-    //   {
-    //     username: user.username,
-    //   },
-    //   config.secret,
-    //   {
-    //     expiresIn: "10d",
-    //   }
-    // );
-
-    // console.log(userToken);
-
-    // if (typeof window !== "undefined") {
-    //   Cookie.set("token", userToken);
-    // }
-
     await bcrypt.compare(password, hash).then(function (result) {
       if (!result) {
         return res
@@ -89,5 +63,16 @@ export default {
 
       return res.status(200).json({ message: "entrou com sucesso" });
     });
+  },
+  async show(req: Request, res: Response) {
+    const { email } = req.params;
+
+    const userRepository = getRepository(User);
+
+    const userDB = await userRepository.findOne({
+      where: { email },
+    });
+
+    return res.send({ user: userDB?.username });
   },
 };

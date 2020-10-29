@@ -36,13 +36,12 @@ const Login = () => {
       password,
     };
 
-    console.log(rememberMe);
     api
       .post("/login", data)
       .then(async (res) => {
         const userToken = await jwt.sign(
           {
-            username: data.email,
+            email: data.email,
           },
           config.secret,
           {
@@ -50,7 +49,7 @@ const Login = () => {
           }
         );
         setErrorMessage("");
-        await Cookie.set("token", `Bearer ${userToken}`);
+        await Cookie.set("token", userToken);
         history.push("/");
       })
       .catch((err) => {
@@ -98,7 +97,7 @@ const Login = () => {
             <Link to="/forgot-password">Esqueci a Senha</Link>
           </div>
           <p className="error">{errorMessage ? errorMessage : null}</p>
-          <button type="submit" disabled={isEnabled} onClick={onFormSubmit}>
+          <button type="submit" disabled={!isEnabled} onClick={onFormSubmit}>
             Enviar
           </button>
         </form>
