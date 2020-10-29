@@ -12,6 +12,7 @@ export default {
       about: orphanage.about,
       instructions: orphanage.instructions,
       opening_hours: orphanage.opening_hours,
+      phone: orphanage.phone,
       open_on_weekends: orphanage.open_on_weekends,
       images: imagesView.renderMany(orphanage.images),
       is_accepted: orphanage.is_accepted,

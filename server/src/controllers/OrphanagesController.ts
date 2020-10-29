@@ -38,6 +38,7 @@ export default {
       about,
       instructions,
       opening_hours,
+      phone,
       open_on_weekends,
     } = req.body;
     const orphanagesRepository = getRepository(Orphanage);
@@ -55,6 +56,7 @@ export default {
       about,
       instructions,
       opening_hours,
+      phone,
       open_on_weekends: open_on_weekends === "true",
       images,
       is_accepted: false,
@@ -67,6 +69,7 @@ export default {
       about: Yup.string().required().max(300),
       instructions: Yup.string().required(),
       opening_hours: Yup.string().required(),
+      phone: Yup.string().required(),
       open_on_weekends: Yup.boolean().required(),
       images: Yup.array(
         Yup.object().shape({

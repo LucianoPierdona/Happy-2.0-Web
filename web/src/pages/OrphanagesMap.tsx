@@ -49,7 +49,7 @@ const OrphanagesMap = () => {
       >
         <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {orphanages.map((orphanage) => {
-          if (!orphanage.is_accepted) return;
+          // if (!orphanage.is_accepted) return;
 
           return (
             <Marker

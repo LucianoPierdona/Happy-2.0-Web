@@ -4,9 +4,6 @@ import User from "../models/User";
 import * as Yup from "yup";
 import bcrypt from "bcrypt";
 
-import Cookie from "js-cookie";
-import jwt from "jsonwebtoken";
-
 export default {
   async register(req: Request, res: Response) {
     const { username, email, password } = req.body;
