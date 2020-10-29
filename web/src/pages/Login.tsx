@@ -50,7 +50,7 @@ const Login = () => {
           }
         );
         setErrorMessage("");
-        await Cookie.set("token", userToken);
+        await Cookie.set("token", `Bearer ${userToken}`);
         history.push("/");
       })
       .catch((err) => {
