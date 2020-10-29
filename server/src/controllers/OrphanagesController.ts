@@ -3,6 +3,7 @@ import { getRepository } from "typeorm";
 import Orphanage from "../models/Orphanage";
 import orphanageView from "../views/orphanages_view";
 import * as Yup from "yup";
+import Cookie from "js-cookie";
 
 // Controllers
 export default {
@@ -42,11 +43,21 @@ export default {
     } = req.body;
     const orphanagesRepository = getRepository(Orphanage);
 
+    console.log(Cookie.get("token"), "TOKEN AQUI MERMAO");
+
     // Handle the orphanage image and save
     const requestImages = req.files as Express.Multer.File[];
     const images = requestImages.map((image) => {
       return { path: image.filename };
     });
+
+    const creatorId: any = Cookie.get("token");
+
+    if (!creatorId) {
+      return res
+        .status(404)
+        .json({ message: "Você precisa entrar na sua conta." });
+    }
 
     const data = {
       name,
@@ -57,6 +68,7 @@ export default {
       opening_hours,
       open_on_weekends: open_on_weekends === "true",
       images,
+      creatorId,
     };
 
     const schema = Yup.object().shape({
