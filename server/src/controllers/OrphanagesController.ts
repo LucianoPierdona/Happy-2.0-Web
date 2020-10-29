@@ -29,6 +29,26 @@ export default {
     return res.json(orphanageView.render(orphanage));
   },
 
+  async accepted(req: Request, res: Response) {
+    const orphanagesRepository = getRepository(Orphanage);
+
+    const orphanages = await orphanagesRepository.find({
+      relations: ["images"],
+    });
+
+    const acceptedArray = [] as Orphanage[];
+
+    orphanages.map((orphanage) => {
+      if (orphanage.is_accepted) {
+        acceptedArray.push(orphanage);
+      }
+    });
+
+    console.log(acceptedArray);
+
+    return res.json(orphanageView.renderMany(acceptedArray));
+  },
+
   // Create a Single Orphanage
   async create(req: Request, res: Response) {
     const {

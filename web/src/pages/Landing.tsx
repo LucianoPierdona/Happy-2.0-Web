@@ -33,7 +33,7 @@ const Landing = () => {
 
         <div className="restricted-access">
           {token ? (
-            <Link to="/">Acesso Restrito</Link>
+            <Link to="/restricted-access">Acesso Restrito</Link>
           ) : (
             <Link to="/login">Entrar</Link>
           )}

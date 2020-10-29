@@ -1,0 +1,31 @@
+button {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: #12afcb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.first {
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background: #ffd666;
+}
+
+.active {
+  background: #ffd666;
+  transition: background-color 0.2s;
+}
+
+.active:hover {
+  background: #fffb00;
+}

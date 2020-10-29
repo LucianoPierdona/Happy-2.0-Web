@@ -75,11 +75,13 @@
   display: flex;
   justify-content: space-between;
   align-items: centers;
+  flex-direction: row;
 }
 
 .banner-right form .subtitles div {
   width: 100%;
   text-align: left;
+  flex-direction: row;
 }
 
 .banner-right form .subtitles [type="checkbox"] {
