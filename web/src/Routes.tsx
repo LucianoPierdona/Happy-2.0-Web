@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Orphanage from "./pages/Orphanage";
 import OrphanagesMap from "./pages/OrphanagesMap";
+import ForgotPassword from "./pages/ForgotPassword";
 
 // Routes of the web application
 function Routes() {
@@ -16,6 +17,7 @@ function Routes() {
         <Route path="/orphanages/create" exact component={CreateOrphanage} />
         <Route path="/orphanages/:id" exact component={Orphanage} />
         <Route path="/login" exact component={Login} />
+        <Route path="/forgot-password" exact component={ForgotPassword} />
       </Switch>
     </BrowserRouter>
   );

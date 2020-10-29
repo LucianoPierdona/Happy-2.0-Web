@@ -6,25 +6,26 @@ import api from "../services/api";
 import jwt from "jsonwebtoken";
 import { config } from "../utils/config";
 
-import logoImg from "../assets/Logotipo.svg";
-
 import "../styles/pages/login.css";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import FormBanner from "../components/FormBanner";
 
 const Login = () => {
   const history = useHistory();
+  // See if the user is already logged in
+  Cookie.get("token") && history.push("/");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [enableButton, setEnableButton] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     email.length > 0 && email.includes("@")
-      ? setEnableButton(true)
-      : setEnableButton(false);
-    password.length > 0 ? setEnableButton(true) : setEnableButton(false);
+      ? setIsEnabled(false)
+      : setIsEnabled(true);
+    password.length > 0 ? setIsEnabled(true) : setIsEnabled(false);
   }, [email, password]);
 
   const onFormSubmit = (event: FormEvent) => {
@@ -65,13 +66,7 @@ const Login = () => {
       <Link to="/" className="go-back">
         <FiArrowLeft color="#15C3D6" size={20} />
       </Link>
-      <div className="banner-left">
-        <img src={`${logoImg}`} alt="logo Happy" />
-        <div className="location">
-          <strong>Antônio Prado</strong>
-          <p>Rio Grande Do Sul</p>
-        </div>
-      </div>
+      <FormBanner />
       <div className="banner-right">
         <form>
           <h1>Fazer Login!</h1>
@@ -100,10 +95,10 @@ const Login = () => {
               />
               <label htmlFor="remember">Lembrar-me</label>
             </div>
-            <Link to="/">Esqueci a Senha</Link>
+            <Link to="/forgot-password">Esqueci a Senha</Link>
           </div>
           <p className="error">{errorMessage ? errorMessage : null}</p>
-          <button type="submit" disabled={!enableButton} onClick={onFormSubmit}>
+          <button type="submit" disabled={isEnabled} onClick={onFormSubmit}>
             Enviar
           </button>
         </form>
