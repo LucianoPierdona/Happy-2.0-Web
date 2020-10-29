@@ -1,5 +1,5 @@
-div {
-  display: flex;
+#login-content {
+  flex-direction: row;
 }
 
 .banner-right {

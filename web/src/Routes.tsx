@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Orphanage from "./pages/Orphanage";
 import OrphanagesMap from "./pages/OrphanagesMap";
 import ForgotPassword from "./pages/ForgotPassword";
+import SuccessPage from "./pages/SuccessPage";
 
 // Routes of the web application
 function Routes() {
@@ -13,11 +14,12 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Landing} />
-        <Route path="/map" exact component={OrphanagesMap} />
+        <Route path="/map" component={OrphanagesMap} />
         <Route path="/orphanages/create" exact component={CreateOrphanage} />
         <Route path="/orphanages/:id" exact component={Orphanage} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/forgot-password" exact component={ForgotPassword} />
+        <Route path="/login" component={Login} />
+        <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/success" component={SuccessPage} />
       </Switch>
     </BrowserRouter>
   );

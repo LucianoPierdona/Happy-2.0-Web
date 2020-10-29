@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div id="login-content">
       <Link to="/" className="go-back">
         <FiArrowLeft color="#15C3D6" size={20} />
       </Link>
@@ -102,7 +102,7 @@ const Login = () => {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -16,3 +16,8 @@ button,
 textarea {
   font: 600 10px "Nunito", sans-serif;
 }
+
+div {
+  display: flex;
+  flex-direction: column;
+}

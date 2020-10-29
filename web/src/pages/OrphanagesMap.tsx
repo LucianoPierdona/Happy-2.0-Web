@@ -14,6 +14,7 @@ interface Orphanage {
   latitude: number;
   longitude: number;
   name: string;
+  is_accepted: boolean;
 }
 
 // Orphanages Map Locations
@@ -48,6 +49,8 @@ const OrphanagesMap = () => {
       >
         <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {orphanages.map((orphanage) => {
+          if (!orphanage.is_accepted) return;
+
           return (
             <Marker
               key={orphanage.id}

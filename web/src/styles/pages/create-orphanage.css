@@ -1,6 +1,11 @@
 /* styling for the create orphanage page */
+div {
+  flex-direction: column;
+}
+
 #page-create-orphanage {
   display: flex;
+  width: 100vw;
 }
 
 #page-create-orphanage main {
