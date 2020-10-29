@@ -7,6 +7,7 @@ export default {
       username: user.username,
       email: user.email,
       password: user.password,
+      admin_rights: user.admin_rights,
     };
   },
 };

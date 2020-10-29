@@ -26,6 +26,11 @@ export class users1603764898093 implements MigrationInterface {
             name: "password",
             type: "varchar",
           },
+          {
+            name: "admin_rights",
+            type: "boolean",
+            default: false,
+          },
         ],
       })
     );

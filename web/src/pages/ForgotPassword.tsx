@@ -11,24 +11,25 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
 
-  // function getUser() {
-  //   const token = Cookie.getJSON("token");
-  //
-  //   const emailToken = jwt.decode(token);
+  function getUser() {
+    const token = Cookie.getJSON("token");
 
-  //   if (!emailToken) return;
+    const emailToken = jwt.decode(token);
 
-  //   const { email }: any = emailToken;
+    if (!emailToken) return;
 
-  //   api.get(`user/${email}`).then((res) => {
-  //     console.log(res);
-  //   });
-  // }
+    const { email }: any = emailToken;
+
+    api.get(`user/${email}`).then((res) => {
+      console.log(res);
+    });
+  }
 
   useEffect(() => {
     email.length > 0 && email.includes("@")
       ? setIsDisabled(false)
       : setIsDisabled(true);
+    getUser();
   }, [email]);
 
   const onFormSubmit = (event: FormEvent) => {

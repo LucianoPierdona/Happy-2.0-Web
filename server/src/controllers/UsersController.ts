@@ -21,6 +21,7 @@ export default {
         username,
         email,
         password: hash,
+        admin_rights: false,
       };
 
       const userRepository = getRepository(User);
@@ -29,6 +30,7 @@ export default {
         username: Yup.string().required(),
         email: Yup.string().required(),
         password: Yup.string().required(),
+        admin_rights: Yup.boolean().required(),
       });
 
       await schema.validate(data, {
@@ -73,6 +75,8 @@ export default {
       where: { email },
     });
 
-    return res.send({ user: userDB?.username });
+    const { username, admin_rights }: any = userDB;
+
+    return res.send({ user: { username, admin_rights } });
   },
 };
