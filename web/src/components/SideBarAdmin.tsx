@@ -19,16 +19,25 @@ const SideBarAdmin: React.FC<SideBarProps> = ({ activeF, activeS }) => {
     history.push("/");
   }
 
+  const firstIsActive = activeF ? activeF : "not-active";
+  const secondIsActive = activeS ? activeS : "not-active";
+
+  const firstColorActive = activeF ? "#12afcb" : "#FFF";
+  const secondColorActive = activeS ? "#12afcb" : "#FFF";
+
   return (
     <aside>
       <img src={mapMarkerImg} alt="Happy" />
 
       <main>
-        <button type="button" className={`${activeF} first`}>
-          <FiMapPin size={24} color={activeF ? "#0089A5" : "#FFF"} />
+        <button
+          type="button"
+          className={`button-side-bar first ${firstIsActive}`}
+        >
+          <FiMapPin size={24} color={firstColorActive} />
         </button>
-        <button type="button" className={`${activeS}`}>
-          <FiAlertCircle size={24} color={activeS ? "#0089A5" : "#FFF"} />
+        <button type="button" className={`button-side-bar ${secondIsActive}`}>
+          <FiAlertCircle size={24} color={secondColorActive} />
         </button>
       </main>
 

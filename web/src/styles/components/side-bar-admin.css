@@ -1,8 +1,7 @@
-button {
+button.button-side-bar {
   width: 48px;
   height: 48px;
   border: 0;
-  background: #12afcb;
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -17,8 +16,12 @@ button {
   margin-bottom: 15px;
 }
 
-button:hover {
-  background: #ffd666;
+button.button-side-bar:hover {
+  background: #0e9ab3;
+}
+
+.not-active {
+  background: #12afcb;
 }
 
 .active {
@@ -27,5 +30,5 @@ button:hover {
 }
 
 .active:hover {
-  background: #fffb00;
+  background: #fbff00;
 }
