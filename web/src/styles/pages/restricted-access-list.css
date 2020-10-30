@@ -39,7 +39,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 2fr;
-  gap: 4rem 2rem;
+  gap: 4rem 1rem;
 }
 
 .list-orphanages {
@@ -78,7 +78,8 @@
   justify-content: space-between;
 }
 
-.footer-card .card-buttons button {
+.footer-card .card-buttons button,
+.footer-card .card-buttons a {
   background: #ebf2f5;
   align-items: center;
   border-radius: 16px;
@@ -88,6 +89,7 @@
   transition: background-color 0.2s;
 }
 
-.footer-card .card-buttons button:hover {
+.footer-card .card-buttons button:hover,
+.footer-card .card-buttons a:hover {
   background: #d3e2e5;
 }

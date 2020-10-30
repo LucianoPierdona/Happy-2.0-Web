@@ -3,27 +3,11 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { useHistory, useParams } from "react-router-dom";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
 import SideBar from "../components/SideBar";
 import api from "../services/api";
 import "../styles/pages/edit-orphanage.css";
 import { mapIcon } from "../utils/mapIcon";
-
-interface OrphanageProps {
-  id: number;
-  latitude: number;
-  longitude: number;
-  name: string;
-  description: string;
-  instructions: string;
-  opening_hours: string;
-  open_on_weekends: boolean;
-  phone: string;
-  images: Array<{
-    id: number;
-    url: string;
-  }>;
-}
+import Cookie from "js-cookie";
 
 interface OrphanageParams {
   id: string;
@@ -31,6 +15,8 @@ interface OrphanageParams {
 
 const EditOrphanage = () => {
   const history = useHistory();
+  if (!Cookie.get("token")) history.push("/");
+
   const { id } = useParams<OrphanageParams>();
   const [position, setPosition] = useState({
     latitude: 0,
@@ -47,7 +33,6 @@ const EditOrphanage = () => {
 
   useEffect(() => {
     api.get(`orphanages/${id}`).then((res) => {
-      console.log(res.data);
       const {
         about,
         instructions,
@@ -62,6 +47,7 @@ const EditOrphanage = () => {
 
       images.map((image: any) => {
         setPreviewImages([...previewImages, image.url]);
+        setImages([...images, image.url]);
       });
       setName(name);
       setInstructions(instructions);
@@ -71,7 +57,7 @@ const EditOrphanage = () => {
       setPhone(phone);
       setOpeningHours(opening_hours);
     });
-  }, []);
+  }, [id]);
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) {
@@ -100,12 +86,12 @@ const EditOrphanage = () => {
   // Send the data to the database
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    console.log(event);
 
     const { latitude, longitude } = position;
 
     const data = new FormData();
 
+    data.append("id", id);
     data.append("name", name);
     data.append("about", about);
     data.append("latitude", String(latitude));
@@ -117,9 +103,10 @@ const EditOrphanage = () => {
     images.forEach((image) => {
       data.append("images", image);
     });
+    console.log(data);
 
     try {
-      await api.post("/orphanages/create", data);
+      await api.post("/orphanage/edit", data);
       alert("Cadastro realizado com sucesso!");
       history.push("/");
     } catch (err) {

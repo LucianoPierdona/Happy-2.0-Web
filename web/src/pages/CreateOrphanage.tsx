@@ -74,8 +74,7 @@ export default function CreateOrphanage() {
 
     try {
       await api.post("/orphanages/create", data);
-      alert("Cadastro realizado com sucesso!");
-      history.push("/");
+      history.push("/success");
     } catch (err) {
       if (err) {
         console.log(err);

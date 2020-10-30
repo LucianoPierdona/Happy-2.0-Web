@@ -25,6 +25,13 @@ routes.get("/orphanages", OrphanagesController.index);
 // Get accepted orphanages
 routes.get("/orphanages/list/accepted", OrphanagesController.accepted);
 
+// Edit Orphanage
+routes.post(
+  "/orphanage/edit",
+  upload.array("images"),
+  OrphanagesController.editOrphanage
+);
+
 // Register an User
 routes.post("/register", UsersController.register);
 

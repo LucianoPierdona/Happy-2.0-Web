@@ -4,9 +4,10 @@ import "../styles/pages/restricted-access-list.css";
 
 import SideBarAdmin from "../components/SideBarAdmin";
 import api from "../services/api";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { Map, Marker, TileLayer } from "react-leaflet";
 import { mapIcon } from "../utils/mapIcon";
 import { FiEdit3, FiTrash } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 interface RestrictedAccessListProps {
   id: number;
@@ -58,9 +59,9 @@ export default function RestrictedAccess() {
                 <div className="footer-card">
                   <h1 className="card-name">{orphanage.name}</h1>
                   <div className="card-buttons">
-                    <button>
+                    <Link to={`/restricted-access/edit/${orphanage.id}`}>
                       <FiEdit3 size={20} color="#15C3D6" />
-                    </button>
+                    </Link>
                     <button>
                       <FiTrash size={20} color="#15C3D6" />
                     </button>
