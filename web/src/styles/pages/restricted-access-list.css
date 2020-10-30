@@ -49,6 +49,9 @@
 
 .map-card {
   width: 100%;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #d3e2e5;
 }
 
 .map-card .leaflet-container {
@@ -59,9 +62,32 @@
   background: #fff;
   padding: 10px 12px;
   border-radius: 0 0 20px 20px;
-  border: 1px solid #d3e2e5;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.footer-card h1 {
+.footer-card {
   color: #4d6f80;
+}
+
+.footer-card .card-buttons {
+  margin-right: 20px;
+  width: 19%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-card .card-buttons button {
+  background: #ebf2f5;
+  align-items: center;
+  border-radius: 16px;
+  border: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.footer-card .card-buttons button:hover {
+  background: #d3e2e5;
 }

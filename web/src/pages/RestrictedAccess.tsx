@@ -6,6 +6,7 @@ import SideBarAdmin from "../components/SideBarAdmin";
 import api from "../services/api";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { mapIcon } from "../utils/mapIcon";
+import { FiEdit3, FiTrash } from "react-icons/fi";
 
 interface RestrictedAccessListProps {
   id: number;
@@ -56,6 +57,14 @@ export default function RestrictedAccess() {
                 </Map>
                 <div className="footer-card">
                   <h1 className="card-name">{orphanage.name}</h1>
+                  <div className="card-buttons">
+                    <button>
+                      <FiEdit3 size={20} color="#15C3D6" />
+                    </button>
+                    <button>
+                      <FiTrash size={20} color="#15C3D6" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
