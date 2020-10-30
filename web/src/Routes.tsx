@@ -8,6 +8,7 @@ import OrphanagesMap from "./pages/OrphanagesMap";
 import ForgotPassword from "./pages/ForgotPassword";
 import SuccessPage from "./pages/SuccessPage";
 import RestrictedAccess from "./pages/RestrictedAccess";
+import EditOrphanage from "./pages/EditOrphanage";
 
 // Routes of the web application
 function Routes() {
@@ -21,7 +22,8 @@ function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/success" component={SuccessPage} />
-        <Route path="/restricted-access" component={RestrictedAccess} />
+        <Route path="/restricted-access" exact component={RestrictedAccess} />
+        <Route path="/restricted-access/edit/:id" component={EditOrphanage} />
       </Switch>
     </BrowserRouter>
   );

@@ -10,7 +10,7 @@ import api from "../services/api";
 import { useParams } from "react-router-dom";
 
 // Props for the Orphanage
-interface Orphanage {
+interface OrphanageProps {
   id: number;
   latitude: number;
   longitude: number;
@@ -32,7 +32,7 @@ interface OrphanageParams {
 
 export default function Orphanage() {
   // Initial Data
-  const [orphanage, setOrphanage] = useState<Orphanage>();
+  const [orphanage, setOrphanage] = useState<OrphanageProps>();
   const params = useParams<OrphanageParams>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
