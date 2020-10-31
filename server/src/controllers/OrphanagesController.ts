@@ -122,17 +122,6 @@ export default {
       open_on_weekends,
     } = req.body;
 
-    console.log(
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      phone,
-      open_on_weekends
-    );
-
     const orphanagesRepository = getRepository(Orphanage);
 
     // Handle the orphanage image and save
@@ -150,8 +139,8 @@ export default {
       opening_hours,
       phone,
       open_on_weekends: open_on_weekends === "true",
-      // images,
-      is_accepted: false,
+      images,
+      is_accepted: true,
     };
 
     const schema = Yup.object().shape({
@@ -177,5 +166,13 @@ export default {
     await orphanagesRepository.update(id, data);
 
     return res.status(201).json(data);
+  },
+  async deleteOrphanage(req: Request, res: Response) {
+    const { id } = req.params;
+    const orphanagesRepository = getRepository(Orphanage);
+
+    await orphanagesRepository.delete(id);
+
+    return res.status(201).json({ message: "excluido com sucesso" });
   },
 };

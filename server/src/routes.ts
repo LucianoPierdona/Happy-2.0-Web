@@ -5,6 +5,7 @@ import UsersController from "./controllers/UsersController";
 
 // Routes of the application
 import uploadConfig from "./config/upload";
+import OrphanagesController from "./controllers/OrphanagesController";
 
 const routes = Router();
 const upload = multer(uploadConfig);
@@ -31,6 +32,9 @@ routes.post(
   upload.array("images"),
   OrphanagesController.editOrphanage
 );
+
+// Delete Orphanage
+routes.delete("/orphanage/delete/:id", OrphanagesController.deleteOrphanage);
 
 // Register an User
 routes.post("/register", UsersController.register);

@@ -62,9 +62,11 @@ export default function RestrictedAccess() {
                     <Link to={`/restricted-access/edit/${orphanage.id}`}>
                       <FiEdit3 size={20} color="#15C3D6" />
                     </Link>
-                    <button>
+                    <Link
+                      to={`/restricted-access/delete/${orphanage.id}/${orphanage.name}`}
+                    >
                       <FiTrash size={20} color="#15C3D6" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
