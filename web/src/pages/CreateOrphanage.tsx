@@ -4,11 +4,12 @@ import { LeafletMouseEvent } from "leaflet";
 
 import { FiPlus } from "react-icons/fi";
 
-import "../styles/pages/create-orphanage.css";
 import SideBar from "../components/SideBar";
 import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
+
+import { PageCreateOrphanage } from "../styles/pages/create-orphanage";
 
 // Create Orphanage page
 export default function CreateOrphanage() {
@@ -83,7 +84,7 @@ export default function CreateOrphanage() {
   }
 
   return (
-    <div id="page-create-orphanage">
+    <PageCreateOrphanage>
       <SideBar />
       <main>
         <form
@@ -208,7 +209,7 @@ export default function CreateOrphanage() {
           </button>
         </form>
       </main>
-    </div>
+    </PageCreateOrphanage>
   );
 }
 

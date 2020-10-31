@@ -18,13 +18,15 @@ export const MapCard = styled.div`
     color: #4d6f80;
     & .card-buttons {
       margin-right: 20px;
+      padding-top: 1px;
       width: 19%;
       flex-direction: row;
-      & .accepted {
+      &.accepted {
         justify-content: space-between;
       }
-      & .pendents {
+      &.pendents {
         justify-content: center;
+        align-items: center;
       }
       & button,
       a {

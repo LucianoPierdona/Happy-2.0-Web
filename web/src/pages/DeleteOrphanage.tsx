@@ -1,9 +1,10 @@
 import React from "react";
 import Cookie from "js-cookie";
 import { Link, useHistory, useParams } from "react-router-dom";
-import "../styles/pages/delete-orphanage.css";
 import DeleteIcon from "../assets/DeleteIcon.svg";
 import api from "../services/api";
+
+import { DeleteBlock } from "../styles/pages/delete";
 
 interface OrphanageParams {
   id: string;
@@ -26,7 +27,7 @@ const DeleteOrphanage = () => {
   };
 
   return (
-    <div className="delete-block">
+    <DeleteBlock>
       <div className="delete-content">
         <h1>Excluir!</h1>
         <p>Você tem certeza que quer excluir {name}?</p>
@@ -36,7 +37,7 @@ const DeleteOrphanage = () => {
         </div>
       </div>
       <img src={DeleteIcon} alt="delete" />
-    </div>
+    </DeleteBlock>
   );
 };
 

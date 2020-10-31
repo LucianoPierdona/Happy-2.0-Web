@@ -3,11 +3,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 
-import "../styles/pages/orphanage.css";
+// import "../styles/pages/orphanage.css";
 import SideBar from "../components/SideBar";
 import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
 import { useParams } from "react-router-dom";
+
+import { OrphanagePage } from "../styles/pages/orphanage";
 
 // Props for the Orphanage
 interface OrphanageProps {
@@ -49,7 +51,7 @@ export default function Orphanage() {
   }
 
   return (
-    <div id="page-orphanage">
+    <OrphanagePage>
       <SideBar />
       <main>
         <div className="orphanage-details">
@@ -145,6 +147,6 @@ export default function Orphanage() {
           </div>
         </div>
       </main>
-    </div>
+    </OrphanagePage>
   );
 }

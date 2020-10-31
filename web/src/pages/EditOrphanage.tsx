@@ -5,9 +5,13 @@ import { Map, Marker, TileLayer } from "react-leaflet";
 import { useHistory, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import api from "../services/api";
-import "../styles/pages/edit-orphanage.css";
 import { mapIcon } from "../utils/mapIcon";
 import Cookie from "js-cookie";
+
+import { EditOrphanagePage } from "../styles/pages/edit-orphanage";
+import { PageCreateOrphanage } from "../styles/pages/create-orphanage";
+
+import FormHeader from "../components/FormHeader";
 
 interface OrphanageParams {
   id: string;
@@ -119,135 +123,133 @@ const EditOrphanage = () => {
   return (
     <>
       <SideBar />
-      <div className="edit-content">
-        <div className="edit-header">
-          <h1>Editar Perfil de {name}</h1>
-        </div>
-        <div className="edit-subtitle">
-          <h1>Dados</h1>
-          <hr />
-        </div>
-        <form
-          onSubmit={(event) => handleSubmit(event)}
-          className="create-orphanage-form"
-        >
-          <fieldset>
-            <Map
-              center={[-28.8571443, -51.2827246]}
-              style={{ width: "100%", height: 280 }}
-              zoom={15}
-              onClick={handleMapClick}
+      <EditOrphanagePage>
+        <FormHeader name={name} />
+        <PageCreateOrphanage>
+          <main>
+            <form
+              onSubmit={(event) => handleSubmit(event)}
+              className="create-orphanage-form"
             >
-              <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-              {position.latitude !== 0 && (
-                <Marker
-                  interactive={false}
-                  icon={mapIcon}
-                  position={[position.latitude, position.longitude]}
-                />
-              )}
-            </Map>
-
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="about">
-                Sobre <span>Máximo de 300 caracteres</span>
-              </label>
-              <textarea
-                id="name"
-                maxLength={300}
-                value={about}
-                onChange={(e) => setAbout(e.target.value)}
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="images">Fotos</label>
-
-              <div className="images-container">
-                {previewImages?.map((image) => {
-                  console.log(image);
-                  return <img key={image} src={image} alt={name} />;
-                })}
-                <label htmlFor="image[]" className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
-                </label>
-              </div>
-              <input
-                multiple
-                onChange={handleSelectImages}
-                type="file"
-                id="image[]"
-              />
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Visitação</legend>
-
-            <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <textarea
-                id="instructions"
-                value={instructions}
-                onChange={(e) => setInstructions(e.target.value)}
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="opening_hours">Horário de Abertura</label>
-              <input
-                id="opening_hours"
-                value={opening_hours}
-                onChange={(e) => setOpeningHours(e.target.value)}
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="opening_hours">WhatsApp</label>
-              <input
-                id="whatsapp"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
-
-              <div className="button-select">
-                <button
-                  type="button"
-                  className={open_on_weekends ? "active" : ""}
-                  onClick={() => setOpenOnWeekends(true)}
+              <fieldset>
+                <Map
+                  center={[-28.8571443, -51.2827246]}
+                  style={{ width: "100%", height: 280 }}
+                  zoom={15}
+                  onClick={handleMapClick}
                 >
-                  Sim
-                </button>
-                <button
-                  type="button"
-                  className={!open_on_weekends ? "active" : ""}
-                  onClick={() => setOpenOnWeekends(false)}
-                >
-                  Não
-                </button>
-              </div>
-            </div>
-          </fieldset>
+                  <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-          <button className="confirm-button" type="submit">
-            Confirmar
-          </button>
-        </form>
-      </div>
+                  {position.latitude !== 0 && (
+                    <Marker
+                      interactive={false}
+                      icon={mapIcon}
+                      position={[position.latitude, position.longitude]}
+                    />
+                  )}
+                </Map>
+
+                <div className="input-block">
+                  <label htmlFor="name">Nome</label>
+                  <input
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="about">
+                    Sobre <span>Máximo de 300 caracteres</span>
+                  </label>
+                  <textarea
+                    id="name"
+                    maxLength={300}
+                    value={about}
+                    onChange={(e) => setAbout(e.target.value)}
+                  />
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="images">Fotos</label>
+
+                  <div className="images-container">
+                    {previewImages?.map((image) => {
+                      console.log(image);
+                      return <img key={image} src={image} alt={name} />;
+                    })}
+                    <label htmlFor="image[]" className="new-image">
+                      <FiPlus size={24} color="#15b6d6" />
+                    </label>
+                  </div>
+                  <input
+                    multiple
+                    onChange={handleSelectImages}
+                    type="file"
+                    id="image[]"
+                  />
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Visitação</legend>
+
+                <div className="input-block">
+                  <label htmlFor="instructions">Instruções</label>
+                  <textarea
+                    id="instructions"
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
+                  />
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="opening_hours">Horário de Abertura</label>
+                  <input
+                    id="opening_hours"
+                    value={opening_hours}
+                    onChange={(e) => setOpeningHours(e.target.value)}
+                  />
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="opening_hours">WhatsApp</label>
+                  <input
+                    id="whatsapp"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="open_on_weekends">Atende fim de semana</label>
+
+                  <div className="button-select">
+                    <button
+                      type="button"
+                      className={open_on_weekends ? "active" : ""}
+                      onClick={() => setOpenOnWeekends(true)}
+                    >
+                      Sim
+                    </button>
+                    <button
+                      type="button"
+                      className={!open_on_weekends ? "active" : ""}
+                      onClick={() => setOpenOnWeekends(false)}
+                    >
+                      Não
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button className="confirm-button" type="submit">
+                Confirmar
+              </button>
+            </form>
+          </main>
+        </PageCreateOrphanage>
+      </EditOrphanagePage>
     </>
   );
 };

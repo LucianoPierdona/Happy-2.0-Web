@@ -6,6 +6,7 @@ import NoContentIcon from "../assets/NoOrphanages.svg";
 import api from "../services/api";
 
 import OrphanageCard from "../components/OrphanageCard";
+import { ListContent } from "../styles/pages/restricted-access";
 
 interface RestrictedAccessListProps {
   id: number;
@@ -27,7 +28,7 @@ const RestrictedAccessPendents = () => {
   return (
     <>
       <SideBarAdmin activeS="active" />
-      <div className="list-content">
+      <ListContent>
         <div className="list-header">
           <h1>Orfanatos Pendentes</h1>
           <p>{orphanages.length} Orfanatos Pendentes</p>
@@ -35,9 +36,9 @@ const RestrictedAccessPendents = () => {
         <hr />
 
         {orphanages.length !== 0 ? (
-          orphanages.map((orphanage) => {
-            return (
-              <div className="list-orphanages" key={orphanage.id}>
+          <div className="list-orphanages">
+            {orphanages.map((orphanage) => {
+              return (
                 <OrphanageCard
                   key={orphanage.id}
                   type="pendent"
@@ -46,16 +47,16 @@ const RestrictedAccessPendents = () => {
                   latitude={orphanage.latitude}
                   longitude={orphanage.longitude}
                 />
-              </div>
-            );
-          })
+              );
+            })}
+          </div>
         ) : (
           <div className="no-content">
             <img src={NoContentIcon} alt="no content" />
             <p>Nenhum Orfanato Pendente</p>
           </div>
         )}
-      </div>
+      </ListContent>
     </>
   );
 };

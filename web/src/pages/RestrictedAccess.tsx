@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import "../styles/pages/restricted-access-list.css";
-
 import SideBarAdmin from "../components/SideBarAdmin";
 import api from "../services/api";
 
 import NoContentIcon from "../assets/NoOrphanages.svg";
 import OrphanageCard from "../components/OrphanageCard";
+
+import { ListContent } from "../styles/pages/restricted-access";
 
 interface RestrictedAccessListProps {
   id: number;
@@ -29,7 +29,7 @@ export default function RestrictedAccess() {
   return (
     <>
       <SideBarAdmin activeF="active" />
-      <div className="list-content">
+      <ListContent>
         <div className="list-header">
           <h1>Orfanatos Cadastrados</h1>
           <p>{orphanages.length} Orfanatos Cadastrados</p>
@@ -37,9 +37,9 @@ export default function RestrictedAccess() {
         <hr />
 
         {orphanages.length !== 0 ? (
-          orphanages.map((orphanage) => {
-            return (
-              <div className="list-orphanages">
+          <div className="list-orphanages">
+            {orphanages.map((orphanage) => {
+              return (
                 <OrphanageCard
                   key={orphanage.id}
                   type="accepted"
@@ -48,16 +48,16 @@ export default function RestrictedAccess() {
                   latitude={orphanage.latitude}
                   longitude={orphanage.longitude}
                 />
-              </div>
-            );
-          })
+              );
+            })}
+          </div>
         ) : (
           <div className="no-content">
             <img src={NoContentIcon} alt="no content" />
             <p>Nenhum Orfanato Encontrado</p>
           </div>
         )}
-      </div>
+      </ListContent>
     </>
   );
 }

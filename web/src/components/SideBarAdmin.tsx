@@ -2,9 +2,8 @@ import React from "react";
 import { FiAlertCircle, FiLogOut, FiMapPin } from "react-icons/fi";
 import Cookie from "js-cookie";
 import mapMarkerImg from "../assets/Local.svg";
-
-import "../styles/components/side-bar-admin.css";
 import { Link, useHistory } from "react-router-dom";
+import { SideBarAdminAside } from "../styles/components/side-bar-admin";
 
 interface SideBarProps {
   activeF?: string;
@@ -26,7 +25,7 @@ const SideBarAdmin: React.FC<SideBarProps> = ({ activeF, activeS }) => {
   const secondColorActive = activeS ? "#12afcb" : "#FFF";
 
   return (
-    <aside>
+    <SideBarAdminAside>
       <img src={mapMarkerImg} alt="Happy" />
 
       <main>
@@ -50,7 +49,7 @@ const SideBarAdmin: React.FC<SideBarProps> = ({ activeF, activeS }) => {
           <FiLogOut size={24} color="#FFF" />
         </button>
       </footer>
-    </aside>
+    </SideBarAdminAside>
   );
 };
 

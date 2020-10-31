@@ -3,10 +3,13 @@ import { Map, Marker, TileLayer } from "react-leaflet";
 import { useHistory, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import api from "../services/api";
-import "../styles/pages/edit-orphanage.css";
 import { mapIcon } from "../utils/mapIcon";
 import Cookie from "js-cookie";
 import { FiAlertCircle, FiCheck } from "react-icons/fi";
+import { PageCreateOrphanage } from "../styles/pages/create-orphanage";
+import { EditOrphanagePage } from "../styles/pages/edit-orphanage";
+
+import FormHeader from "../components/FormHeader";
 
 interface OrphanageProps {
   id: number;
@@ -65,108 +68,111 @@ const EditOrphanage = () => {
   return (
     <>
       <SideBar />
-      <div className="edit-content">
-        <div className="edit-header">
-          <h1>Orfanato {orphanage.name} pendente</h1>
-        </div>
-        <div className="edit-subtitle">
-          <h1>Dados</h1>
-          <hr />
-        </div>
-
-        <div className="create-orphanage-form">
-          <fieldset>
-            <Map
-              center={[-28.8571443, -51.2827246]}
-              style={{ width: "100%", height: 280 }}
-              zoom={15}
-            >
-              <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <Marker
-                interactive={false}
-                icon={mapIcon}
-                position={[orphanage.latitude, orphanage.longitude]}
-              />
-            </Map>
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <p>{orphanage.name}</p>
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="about">Sobre</label>
-              <p>{orphanage.about}</p>
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="images">Fotos</label>
-              <div className="images-container">
-                {previewImages?.map((image) => {
-                  console.log(image);
-                  return <img key={image} src={image} alt={orphanage.name} />;
-                })}
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Visitação</legend>
-
-            <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <p>{orphanage.instructions}</p>
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="opening_hours">Horário de Abertura</label>
-              <p>{orphanage.opening_hours}</p>
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="opening_hours">WhatsApp</label>
-              <p>{orphanage.phone}</p>
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
-
-              <div className="button-select">
-                <button
-                  type="button"
-                  className={open_on_weekends ? "active" : ""}
+      <EditOrphanagePage>
+        <PageCreateOrphanage>
+          <FormHeader name={orphanage.name} />
+          <main>
+            <div className="create-orphanage-form">
+              <fieldset>
+                <Map
+                  center={[-28.8571443, -51.2827246]}
+                  style={{ width: "100%", height: 280 }}
+                  zoom={15}
                 >
-                  Sim
+                  <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                  <Marker
+                    interactive={false}
+                    icon={mapIcon}
+                    position={[orphanage.latitude, orphanage.longitude]}
+                  />
+                </Map>
+                <div className="input-block">
+                  <label htmlFor="name">Nome</label>
+                  <p>{orphanage.name}</p>
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="about">Sobre</label>
+                  <p>{orphanage.about}</p>
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="images">Fotos</label>
+                  <div className="images-container">
+                    {previewImages?.map((image) => {
+                      console.log(image);
+                      return (
+                        <img key={image} src={image} alt={orphanage.name} />
+                      );
+                    })}
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Visitação</legend>
+
+                <div className="input-block">
+                  <label htmlFor="instructions">Instruções</label>
+                  <p>{orphanage.instructions}</p>
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="opening_hours">Horário de Abertura</label>
+                  <p>{orphanage.opening_hours}</p>
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="opening_hours">WhatsApp</label>
+                  <p>{orphanage.phone}</p>
+                </div>
+
+                <div className="input-block">
+                  <label htmlFor="open_on_weekends">Atende fim de semana</label>
+
+                  <div className="button-select">
+                    <button
+                      type="button"
+                      className={`read-only
+                        ${open_on_weekends ? "active" : ""}
+                      `}
+                    >
+                      Sim
+                    </button>
+                    <button
+                      type="button"
+                      className={`read-only
+                        ${!open_on_weekends ? "active" : ""}
+                      `}
+                    >
+                      Não
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div className="pendent-buttons">
+                <button
+                  className="delete-button"
+                  type="submit"
+                  onClick={deleteOrphanage}
+                >
+                  <FiAlertCircle size={20} color="#FFF" />
+                  Recusar
                 </button>
                 <button
-                  type="button"
-                  className={!open_on_weekends ? "active" : ""}
+                  className="confirm-button"
+                  type="submit"
+                  onClick={acceptOrphanage}
                 >
-                  Não
+                  <FiCheck size={20} color="#FFF" />
+                  Aceitar
                 </button>
               </div>
             </div>
-          </fieldset>
-
-          <div className="pendent-buttons">
-            <button
-              className="delete-button"
-              type="submit"
-              onClick={deleteOrphanage}
-            >
-              <FiAlertCircle size={20} color="#FFF" />
-              Recusar
-            </button>
-            <button
-              className="confirm-button"
-              type="submit"
-              onClick={acceptOrphanage}
-            >
-              <FiCheck size={20} color="#FFF" />
-              Aceitar
-            </button>
-          </div>
-        </div>
-      </div>
+          </main>
+        </PageCreateOrphanage>
+      </EditOrphanagePage>
     </>
   );
 };

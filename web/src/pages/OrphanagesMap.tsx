@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../styles/pages/orphanagesmap.css";
 import mapMarkerImg from "../assets/Local.svg";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiPlus } from "react-icons/fi";
@@ -7,6 +6,8 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
+
+import { PageMap } from "../styles/pages/orphanages-map";
 
 // Orphanage Icon Props
 interface Orphanage {
@@ -30,7 +31,7 @@ const OrphanagesMap = () => {
   }, []);
 
   return (
-    <div id="page-map">
+    <PageMap>
       <aside>
         <header>
           <img src={mapMarkerImg} alt="Happy" />
@@ -76,7 +77,7 @@ const OrphanagesMap = () => {
       <Link to="/orphanages/create" className="create-orphanage">
         <FiPlus size={32} color="#fff" />
       </Link>
-    </div>
+    </PageMap>
   );
 };
 

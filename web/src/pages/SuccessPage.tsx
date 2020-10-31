@@ -1,12 +1,13 @@
 import React from "react";
 
-import "../styles/pages/success-page.css";
 import logoImg from "../assets/SuccessIcon.svg";
 import { Link } from "react-router-dom";
 
+import { SuccessPageBlock } from "../styles/pages/success";
+
 const SuccessPage = () => {
   return (
-    <div id="success-page">
+    <SuccessPageBlock>
       <div className="content-block">
         <h1>Ebaaa!</h1>
         <p>
@@ -16,7 +17,7 @@ const SuccessPage = () => {
         <Link to="/map">Voltar para o Mapa</Link>
       </div>
       <img src={logoImg} alt="logo" />
-    </div>
+    </SuccessPageBlock>
   );
 };
 

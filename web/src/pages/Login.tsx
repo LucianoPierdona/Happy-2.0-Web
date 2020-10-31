@@ -6,10 +6,11 @@ import api from "../services/api";
 import jwt from "jsonwebtoken";
 import { config } from "../utils/config";
 
-import "../styles/pages/login.css";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import FormBanner from "../components/FormBanner";
+import { BannerRight } from "../styles/pages/form-fields";
+import { LoginPage } from "../styles/pages/login";
 
 const Login = () => {
   const history = useHistory();
@@ -61,12 +62,12 @@ const Login = () => {
   };
 
   return (
-    <div id="login-content">
+    <LoginPage>
       <Link to="/" className="go-back">
         <FiArrowLeft color="#15C3D6" size={20} />
       </Link>
       <FormBanner />
-      <div className="banner-right">
+      <BannerRight>
         <form>
           <h1>Fazer Login!</h1>
           <label htmlFor="email">E-Mail</label>
@@ -101,8 +102,8 @@ const Login = () => {
             Enviar
           </button>
         </form>
-      </div>
-    </div>
+      </BannerRight>
+    </LoginPage>
   );
 };
 

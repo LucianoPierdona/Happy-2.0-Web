@@ -1,11 +1,11 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import "../styles/pages/forgot-password.css";
 
 import FormBanner from "../components/FormBanner";
 import api from "../services/api";
 
 import Cookie from "js-cookie";
 import jwt from "jsonwebtoken";
+import { BannerRight } from "../styles/pages/form-fields";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -37,9 +37,9 @@ const ForgotPassword = () => {
   };
 
   return (
-    <>
+    <div style={{ flexDirection: "row" }}>
       <FormBanner />
-      <div className="banner-right">
+      <BannerRight>
         <form>
           <h2>Esqueci a senha</h2>
           <p>Sua redefinição de senha será enviada para o e-mail cadastrado.</p>
@@ -53,8 +53,8 @@ const ForgotPassword = () => {
             Enviar
           </button>
         </form>
-      </div>
-    </>
+      </BannerRight>
+    </div>
   );
 };
 
