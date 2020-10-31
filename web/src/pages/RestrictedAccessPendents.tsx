@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { FiArrowRight } from "react-icons/fi";
-import { Map, Marker, TileLayer } from "react-leaflet";
-import { Link } from "react-router-dom";
 
 import SideBarAdmin from "../components/SideBarAdmin";
-import { mapIcon } from "../utils/mapIcon";
+
 import NoContentIcon from "../assets/NoOrphanages.svg";
 import api from "../services/api";
+
+import OrphanageCard from "../components/OrphanageCard";
 
 interface RestrictedAccessListProps {
   id: number;
@@ -38,34 +37,15 @@ const RestrictedAccessPendents = () => {
         {orphanages.length !== 0 ? (
           orphanages.map((orphanage) => {
             return (
-              <div className="list-orphanages">
-                <div className="map-card" key={orphanage.id}>
-                  <Map
-                    center={[orphanage.latitude, orphanage.longitude]}
-                    zoom={16}
-                    style={{ width: "100%", height: 280 }}
-                    dragging={false}
-                    touchZoom={false}
-                    zoomControl={false}
-                    scrollWheelZoom={false}
-                    doubleClickZoom={false}
-                  >
-                    <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                    <Marker
-                      interactive={false}
-                      icon={mapIcon}
-                      position={[orphanage.latitude, orphanage.longitude]}
-                    />
-                  </Map>
-                  <div className="footer-card">
-                    <h1 className="card-name">{orphanage.name}</h1>
-                    <div className="card-buttons">
-                      <Link to={`/restricted-access/pendents/${orphanage.id}`}>
-                        <FiArrowRight size={20} color="#15C3D6" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+              <div className="list-orphanages" key={orphanage.id}>
+                <OrphanageCard
+                  key={orphanage.id}
+                  type="pendent"
+                  name={orphanage.name}
+                  id={orphanage.id}
+                  latitude={orphanage.latitude}
+                  longitude={orphanage.longitude}
+                />
               </div>
             );
           })
