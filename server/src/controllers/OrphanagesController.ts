@@ -195,4 +195,12 @@ export default {
 
     return res.status(201).json({ message: "excluido com sucesso" });
   },
+  async acceptOrphanage(req: Request, res: Response) {
+    const { id } = req.params;
+    const orphanagesRepository = getRepository(Orphanage);
+
+    await orphanagesRepository.update(id, { is_accepted: true });
+
+    return res.status(201).json({ message: "aceito com sucesso" });
+  },
 };

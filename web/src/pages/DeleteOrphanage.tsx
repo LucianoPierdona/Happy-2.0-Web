@@ -35,7 +35,7 @@ const DeleteOrphanage = () => {
           <button onClick={deleteOrphanage}>Excluir</button>
         </div>
       </div>
-      <img src={DeleteIcon} alt="delete image" />
+      <img src={DeleteIcon} alt="delete" />
     </div>
   );
 };

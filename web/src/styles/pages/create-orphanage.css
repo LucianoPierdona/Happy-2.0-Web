@@ -12,7 +12,7 @@ div {
   flex: 1;
 }
 
-form.create-orphanage-form {
+.create-orphanage-form {
   width: 700px;
   margin: 64px auto;
 
@@ -25,21 +25,21 @@ form.create-orphanage-form {
   overflow: hidden;
 }
 
-form.create-orphanage-form .leaflet-container {
+.create-orphanage-form .leaflet-container {
   margin-bottom: 40px;
   border: 1px solid #d3e2e5;
   border-radius: 20px;
 }
 
-form.create-orphanage-form fieldset {
+.create-orphanage-form fieldset {
   border: 0;
 }
 
-form.create-orphanage-form fieldset + fieldset {
+.create-orphanage-form fieldset + fieldset {
   margin-top: 80px;
 }
 
-form.create-orphanage-form fieldset legend {
+.create-orphanage-form fieldset legend {
   width: 100%;
 
   font-size: 32px;
@@ -52,26 +52,26 @@ form.create-orphanage-form fieldset legend {
   padding-bottom: 24px;
 }
 
-form.create-orphanage-form .input-block + .input-block {
+.create-orphanage-form .input-block + .input-block {
   margin-top: 24px;
 }
 
-form.create-orphanage-form .input-block label {
+.create-orphanage-form .input-block label {
   display: flex;
   color: #8fa7b3;
   margin-bottom: 8px;
   line-height: 24px;
 }
 
-form.create-orphanage-form .input-block label span {
+.create-orphanage-form .input-block label span {
   font-size: 14px;
   color: #8fa7b3;
   margin-left: 24px;
   line-height: 24px;
 }
 
-form.create-orphanage-form .input-block input,
-form.create-orphanage-form .input-block textarea {
+.create-orphanage-form .input-block input,
+.create-orphanage-form .input-block textarea {
   width: 100%;
   background: #f5f8fa;
   border: 1px solid #d3e2e5;
@@ -80,12 +80,12 @@ form.create-orphanage-form .input-block textarea {
   color: #5c8599;
 }
 
-form.create-orphanage-form .input-block input {
+.create-orphanage-form .input-block input {
   height: 64px;
   padding: 0 16px;
 }
 
-form.create-orphanage-form .input-block textarea {
+.create-orphanage-form .input-block textarea {
   min-height: 120px;
   max-height: 240px;
   resize: vertical;
@@ -93,25 +93,25 @@ form.create-orphanage-form .input-block textarea {
   line-height: 28px;
 }
 
-form.create-orphanage-form .input-block input:active,
-form.create-orphanage-form .input-block textarea:active {
+.create-orphanage-form .input-block input:active,
+.create-orphanage-form .input-block textarea:active {
   border: 1px solid #37c77f;
 }
 
-form.create-orphanage-form .input-block .images-container {
+.create-orphanage-form .input-block .images-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 16px;
 }
 
-form.create-orphanage-form .input-block .images-container img {
+.create-orphanage-form .input-block .images-container img {
   width: 100%;
   height: 96px;
   object-fit: cover;
   border-radius: 20px;
 }
 
-form.create-orphanage-form .input-block .new-image {
+.create-orphanage-form .input-block .new-image {
   height: 96px;
   background: #f5f8fa;
   border: 1px dashed #96d2f0;
@@ -123,16 +123,16 @@ form.create-orphanage-form .input-block .new-image {
   align-items: center;
 }
 
-form.create-orphanage-form .input-block input[type="file"] {
+.create-orphanage-form .input-block input[type="file"] {
   display: none;
 }
 
-form.create-orphanage-form .input-block .button-select {
+.create-orphanage-form .input-block .button-select {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-form.create-orphanage-form .input-block .button-select button {
+.create-orphanage-form .input-block .button-select button {
   height: 64px;
   background: #f5f8fa;
   border: 1px solid #d3e2e5;
@@ -140,23 +140,23 @@ form.create-orphanage-form .input-block .button-select button {
   cursor: pointer;
 }
 
-form.create-orphanage-form .input-block .button-select button.active {
+.create-orphanage-form .input-block .button-select button.active {
   background: #edfff6;
   border: 1px solid #a1e9c5;
   color: #37c77f;
   outline: none;
 }
 
-form.create-orphanage-form .input-block .button-select button:first-child {
+.create-orphanage-form .input-block .button-select button:first-child {
   border-radius: 20px 0px 0px 20px;
 }
 
-form.create-orphanage-form .input-block .button-select button:last-child {
+.create-orphanage-form .input-block .button-select button:last-child {
   border-radius: 0 20px 20px 0;
   border-left: 0;
 }
 
-form.create-orphanage-form button.confirm-button {
+.create-orphanage-form button.confirm-button {
   margin-top: 64px;
 
   width: 100%;
@@ -175,10 +175,49 @@ form.create-orphanage-form button.confirm-button {
   transition: background-color 0.2s;
 }
 
-form.create-orphanage-form button.confirm-button svg {
+.create-orphanage-form button.confirm-button svg {
   margin-right: 16px;
 }
 
-form.create-orphanage-form button.confirm-button:hover {
+.create-orphanage-form button.confirm-button:hover {
   background: #36cf82;
+}
+
+.create-orphanage-form p {
+  color: #5c8599;
+}
+
+.pendent-buttons {
+  flex-direction: row;
+}
+
+.pendent-buttons button + button {
+  margin-left: 15px;
+}
+
+.pendent-buttons .delete-button {
+  margin-top: 64px;
+  margin-right: 15px;
+  width: 100%;
+  height: 64px;
+  border: 0;
+  cursor: pointer;
+  background: #ff669d;
+  border-radius: 20px;
+  color: #ffffff;
+  font-weight: 800;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+.pendent-buttons .delete-button:hover {
+  background: #b61d55;
+}
+
+.pendent-buttons .delete-button svg {
+  margin-right: 16px;
 }

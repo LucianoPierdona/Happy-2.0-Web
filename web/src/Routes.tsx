@@ -11,6 +11,7 @@ import RestrictedAccess from "./pages/RestrictedAccess";
 import EditOrphanage from "./pages/EditOrphanage";
 import DeleteOrphanage from "./pages/DeleteOrphanage";
 import RestrictedAccessPendents from "./pages/RestrictedAccessPendents";
+import PendentOrphanage from "./pages/PendentOrphanage";
 
 // Routes of the web application
 function Routes() {
@@ -29,6 +30,11 @@ function Routes() {
           path="/restricted-access/pendents"
           exact
           component={RestrictedAccessPendents}
+        />
+        <Route
+          path="/restricted-access/pendents/:id"
+          exact
+          component={PendentOrphanage}
         />
         <Route
           path="/restricted-access/edit/:id"

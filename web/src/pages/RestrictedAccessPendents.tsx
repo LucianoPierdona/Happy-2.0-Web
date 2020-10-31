@@ -60,7 +60,7 @@ const RestrictedAccessPendents = () => {
                   <div className="footer-card">
                     <h1 className="card-name">{orphanage.name}</h1>
                     <div className="card-buttons">
-                      <Link to={`/restricted-access/edit/${orphanage.id}`}>
+                      <Link to={`/restricted-access/pendents/${orphanage.id}`}>
                         <FiArrowRight size={20} color="#15C3D6" />
                       </Link>
                     </div>

@@ -38,6 +38,9 @@ routes.post(
 // Delete Orphanage
 routes.delete("/orphanage/delete/:id", OrphanagesController.deleteOrphanage);
 
+// Accept Orphanage
+routes.post("/orphanage/accept/:id", OrphanagesController.acceptOrphanage);
+
 // Register an User
 routes.post("/register", UsersController.register);
 
