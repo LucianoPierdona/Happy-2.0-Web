@@ -4,7 +4,7 @@ import Cookie from "js-cookie";
 import mapMarkerImg from "../assets/Local.svg";
 
 import "../styles/components/side-bar-admin.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 interface SideBarProps {
   activeF?: string;
@@ -30,15 +30,19 @@ const SideBarAdmin: React.FC<SideBarProps> = ({ activeF, activeS }) => {
       <img src={mapMarkerImg} alt="Happy" />
 
       <main>
-        <button
+        <Link
+          to="/restricted-access"
           type="button"
           className={`button-side-bar first ${firstIsActive}`}
         >
           <FiMapPin size={24} color={firstColorActive} />
-        </button>
-        <button type="button" className={`button-side-bar ${secondIsActive}`}>
+        </Link>
+        <Link
+          to="/restricted-access/pendents"
+          className={`button-side-bar ${secondIsActive}`}
+        >
           <FiAlertCircle size={24} color={secondColorActive} />
-        </button>
+        </Link>
       </main>
 
       <footer>

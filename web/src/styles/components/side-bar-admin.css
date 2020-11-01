@@ -1,4 +1,4 @@
-button.button-side-bar {
+a.button-side-bar {
   width: 48px;
   height: 48px;
   border: 0;
@@ -16,7 +16,7 @@ button.button-side-bar {
   margin-bottom: 15px;
 }
 
-button.button-side-bar:hover {
+a.button-side-bar:hover {
   background: #0e9ab3;
 }
 

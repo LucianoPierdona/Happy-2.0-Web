@@ -49,6 +49,26 @@ export default {
     return res.json(orphanageView.renderMany(acceptedArray));
   },
 
+  async pendents(req: Request, res: Response) {
+    const orphanagesRepository = getRepository(Orphanage);
+
+    const orphanages = await orphanagesRepository.find({
+      relations: ["images"],
+    });
+
+    const pendentsArray = [] as Orphanage[];
+
+    orphanages.map((orphanage) => {
+      if (!orphanage.is_accepted) {
+        pendentsArray.push(orphanage);
+      }
+    });
+
+    console.log(pendentsArray);
+
+    return res.json(orphanageView.renderMany(pendentsArray));
+  },
+
   // Create a Single Orphanage
   async create(req: Request, res: Response) {
     const {

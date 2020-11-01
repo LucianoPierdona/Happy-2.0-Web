@@ -10,6 +10,7 @@ import SuccessPage from "./pages/SuccessPage";
 import RestrictedAccess from "./pages/RestrictedAccess";
 import EditOrphanage from "./pages/EditOrphanage";
 import DeleteOrphanage from "./pages/DeleteOrphanage";
+import RestrictedAccessPendents from "./pages/RestrictedAccessPendents";
 
 // Routes of the web application
 function Routes() {
@@ -24,6 +25,11 @@ function Routes() {
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/success" component={SuccessPage} />
         <Route path="/restricted-access" exact component={RestrictedAccess} />
+        <Route
+          path="/restricted-access/pendents"
+          exact
+          component={RestrictedAccessPendents}
+        />
         <Route
           path="/restricted-access/edit/:id"
           exact

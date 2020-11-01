@@ -5,7 +5,6 @@ import UsersController from "./controllers/UsersController";
 
 // Routes of the application
 import uploadConfig from "./config/upload";
-import OrphanagesController from "./controllers/OrphanagesController";
 
 const routes = Router();
 const upload = multer(uploadConfig);
@@ -25,6 +24,9 @@ routes.get("/orphanages", OrphanagesController.index);
 
 // Get accepted orphanages
 routes.get("/orphanages/list/accepted", OrphanagesController.accepted);
+
+// Get Pendents Orphanages
+routes.get("/orphanages/list/pendents", OrphanagesController.pendents);
 
 // Edit Orphanage
 routes.post(
