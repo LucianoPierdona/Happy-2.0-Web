@@ -77,6 +77,28 @@ export const PageCreateOrphanage = styled.div`
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           grid-gap: 16px;
+          & .image-card {
+            position: relative;
+            & img {
+              position: absolute;
+            }
+            & .remove-button {
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              right: 0;
+              top: 0;
+              height: 40px;
+              width: 40px;
+              outline: none;
+              border: 1px solid #d3e2e5;
+              background: #fff;
+              border-radius: 0 20px 0 20px;
+              box-sizing: border-box;
+              cursor: pointer;
+            }
+          }
           & img {
             width: 100%;
             height: 96px;

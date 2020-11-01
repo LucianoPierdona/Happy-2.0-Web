@@ -1,6 +1,5 @@
 import { LeafletMouseEvent } from "leaflet";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { FiPlus } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { useHistory, useParams } from "react-router-dom";
 import SideBar from "../components/SideBar";
@@ -50,8 +49,9 @@ const EditOrphanage = () => {
       } = res.data;
 
       images.map((image: any) => {
-        setPreviewImages([...previewImages, image.url]);
-        setImages([...images, image.url]);
+        setPreviewImages((oldImages) => [...oldImages, image.url]);
+        setImages((oldImages) => [...oldImages, image.url]);
+        return console.log(image);
       });
       setName(name);
       setInstructions(instructions);
@@ -178,9 +178,6 @@ const EditOrphanage = () => {
                       console.log(image);
                       return <img key={image} src={image} alt={name} />;
                     })}
-                    <label htmlFor="image[]" className="new-image">
-                      <FiPlus size={24} color="#15b6d6" />
-                    </label>
                   </div>
                   <input
                     multiple

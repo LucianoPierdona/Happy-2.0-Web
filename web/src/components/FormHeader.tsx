@@ -1,5 +1,4 @@
 import React from "react";
-import { EditOrphanagePage } from "../styles/pages/edit-orphanage";
 
 const FormHeader: React.FC<{ name: string }> = ({ name }) => {
   return (

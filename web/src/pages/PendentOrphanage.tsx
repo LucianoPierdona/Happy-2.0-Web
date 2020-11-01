@@ -43,7 +43,7 @@ const EditOrphanage = () => {
       setOrphanage(res.data);
       setOpenOnWeekends(res.data.open_on_weekends);
       res.data.images.map((image: any) => {
-        setPreviewImages([...previewImages, image.url]);
+        return setPreviewImages((olderImages) => [...olderImages, image.url]);
       });
     });
   }, [id]);

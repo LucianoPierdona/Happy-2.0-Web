@@ -2,7 +2,7 @@ import React, { FormEvent, useState, ChangeEvent } from "react";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
 
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiX } from "react-icons/fi";
 
 import SideBar from "../components/SideBar";
 import { mapIcon } from "../utils/mapIcon";
@@ -10,6 +10,11 @@ import api from "../services/api";
 import { useHistory } from "react-router-dom";
 
 import { PageCreateOrphanage } from "../styles/pages/create-orphanage";
+
+interface previewImagesProps {
+  name: string;
+  url: string;
+}
 
 // Create Orphanage page
 export default function CreateOrphanage() {
@@ -24,7 +29,7 @@ export default function CreateOrphanage() {
   const [opening_hours, setOpeningHours] = useState("");
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
-  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [previewImages, setPreviewImages] = useState<previewImagesProps[]>([]);
   const [phone, setPhone] = useState("");
 
   // set the location when users click on the map
@@ -47,7 +52,10 @@ export default function CreateOrphanage() {
     setImages(selectedImages);
 
     const selectedImagesPreview = selectedImages.map((image) => {
-      return URL.createObjectURL(image);
+      return {
+        name: image.name,
+        url: URL.createObjectURL(image),
+      };
     });
 
     setPreviewImages(selectedImagesPreview);
@@ -137,7 +145,37 @@ export default function CreateOrphanage() {
 
               <div className="images-container">
                 {previewImages.map((image) => {
-                  return <img key={image} src={image} alt={name} />;
+                  return (
+                    <div className="image-card" key={image.name}>
+                      <img src={image.url} alt={name} />
+                      <button
+                        type="button"
+                        className="remove-button"
+                        onClick={() => {
+                          const removedImageArray = previewImages.filter(
+                            (imagePreview) => {
+                              if (imagePreview !== image) {
+                                return imagePreview;
+                              }
+                              return null;
+                            }
+                          );
+
+                          const filteredImages = images.filter((imageArr) => {
+                            return imageArr.name !== image.name;
+                          });
+
+                          setImages(filteredImages);
+                          setPreviewImages(removedImageArray);
+
+                          console.log(previewImages);
+                          console.log(images);
+                        }}
+                      >
+                        <FiX size={20} color="#FF669D" />
+                      </button>
+                    </div>
+                  );
                 })}
                 <label htmlFor="image[]" className="new-image">
                   <FiPlus size={24} color="#15b6d6" />

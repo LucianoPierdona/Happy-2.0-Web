@@ -23,6 +23,10 @@ const Global = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
+
+  button {
+    outline: none;
+  }
 `;
 
 export default Global;
