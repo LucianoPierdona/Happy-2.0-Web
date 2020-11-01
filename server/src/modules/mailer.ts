@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import mail from "../config/mail";
 
+// Email Data
 const transport = nodemailer.createTransport({
   host: mail.host,
   port: mail.port,

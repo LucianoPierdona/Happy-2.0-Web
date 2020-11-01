@@ -1,5 +1,6 @@
 import User from "../models/User";
 
+// User Resolver
 export default {
   render(user: User) {
     return {

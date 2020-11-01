@@ -29,6 +29,7 @@ export default {
     return res.json(orphanageView.render(orphanage));
   },
 
+  // Show accepted orphanages
   async accepted(req: Request, res: Response) {
     const orphanagesRepository = getRepository(Orphanage);
 
@@ -47,6 +48,7 @@ export default {
     return res.json(orphanageView.renderMany(acceptedArray));
   },
 
+  // Show pendents orphanages
   async pendents(req: Request, res: Response) {
     const orphanagesRepository = getRepository(Orphanage);
 
@@ -124,6 +126,8 @@ export default {
 
     return res.status(201).json(orphanage);
   },
+
+  // Edit an orphanage
   async editOrphanage(req: Request, res: Response) {
     console.log(req.body);
     const {
@@ -183,6 +187,8 @@ export default {
 
     return res.status(201).json(data);
   },
+
+  // Delete an orphanage
   async deleteOrphanage(req: Request, res: Response) {
     const { id } = req.params;
     const orphanagesRepository = getRepository(Orphanage);
@@ -191,6 +197,8 @@ export default {
 
     return res.status(201).json({ message: "excluido com sucesso" });
   },
+
+  // accept and orphanage
   async acceptOrphanage(req: Request, res: Response) {
     const { id } = req.params;
     const orphanagesRepository = getRepository(Orphanage);

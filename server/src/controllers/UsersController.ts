@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 import mailer from "../modules/mailer";
 
 export default {
+  // Register an user
   async register(req: Request, res: Response) {
     const { username, email, password } = req.body;
 
@@ -45,6 +46,8 @@ export default {
       return res.status(201).json(user);
     });
   },
+
+  // Login a user
   async login(req: Request, res: Response) {
     const { email, password } = req.body;
     const userRepository = getRepository(User);
@@ -67,6 +70,8 @@ export default {
       return res.status(200).json({ message: "entrou com sucesso" });
     });
   },
+
+  // show a single user
   async show(req: Request, res: Response) {
     const { email } = req.params;
 
@@ -80,6 +85,8 @@ export default {
 
     return res.send({ user: { username, admin_rights } });
   },
+
+  // send an email to change password
   async forgotPassword(req: Request, res: Response) {
     const { email } = req.body;
     const userRepository = getRepository(User);
@@ -107,6 +114,8 @@ export default {
       res.status(400).json({ error: "Error on forgot password, try again" });
     }
   },
+
+  // change the user password
   async changePassword(req: Request, res: Response) {
     const { password, email } = req.body;
     const userRepository = getRepository(User);
