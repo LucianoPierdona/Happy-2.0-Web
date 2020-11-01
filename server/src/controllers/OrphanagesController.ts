@@ -25,7 +25,7 @@ export default {
     const orphanage = await orphanagesRepository.findOneOrFail(id, {
       relations: ["images"],
     });
-    console.log(orphanage);
+
     return res.json(orphanageView.render(orphanage));
   },
 
@@ -44,8 +44,6 @@ export default {
       }
     });
 
-    console.log(acceptedArray);
-
     return res.json(orphanageView.renderMany(acceptedArray));
   },
 
@@ -63,8 +61,6 @@ export default {
         pendentsArray.push(orphanage);
       }
     });
-
-    console.log(pendentsArray);
 
     return res.json(orphanageView.renderMany(pendentsArray));
   },

@@ -53,6 +53,9 @@ routes.get("/user/:email", UsersController.show);
 // Forgot Password
 routes.post("/forgot-password", UsersController.forgotPassword);
 
+// Change Password
+routes.post("/change-password", UsersController.changePassword);
+
 export default routes;
 
 // {

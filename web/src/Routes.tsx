@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Orphanage from "./pages/Orphanage";
 import OrphanagesMap from "./pages/OrphanagesMap";
 import ForgotPassword from "./pages/ForgotPassword";
+import ChangePassword from "./pages/ChangePassword";
 import SuccessPage from "./pages/SuccessPage";
 import RestrictedAccess from "./pages/RestrictedAccess";
 import EditOrphanage from "./pages/EditOrphanage";
@@ -24,6 +25,7 @@ function Routes() {
         <Route path="/orphanages/:id" exact component={Orphanage} />
         <Route path="/login" component={Login} />
         <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/change-password/:email" component={ChangePassword} />
         <Route path="/success" component={SuccessPage} />
         <Route path="/restricted-access" exact component={RestrictedAccess} />
         <Route

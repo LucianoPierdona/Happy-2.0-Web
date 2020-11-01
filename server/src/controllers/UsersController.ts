@@ -12,7 +12,10 @@ export default {
     const saltRounds = 3;
     await bcrypt.hash(password, saltRounds, async function (err, hash) {
       if (err) {
-        return console.log(err);
+        console.log(err);
+        return res
+          .status(400)
+          .json({ error: "houve algum erro, tente novamente" });
       }
 
       const data = {
@@ -78,7 +81,6 @@ export default {
     return res.send({ user: { username, admin_rights } });
   },
   async forgotPassword(req: Request, res: Response) {
-    console.log("teste");
     const { email } = req.body;
     const userRepository = getRepository(User);
 
@@ -94,7 +96,7 @@ export default {
           to: email,
           from: "piersgroup@gmail.com",
           subject: "Forgot Password",
-          html: `<a href="http://localhost:3000/change-pasword/${email}">Clique aqui para mudar sua senha</a>`,
+          html: `<a href="http://localhost:3000/change-password/${email}">Clique aqui para mudar sua senha</a>`,
         })
         .catch((err) => {
           console.log(err);
@@ -102,7 +104,39 @@ export default {
 
       return res.send(200).send({ message: "email enviado com sucesso" });
     } catch (err) {
-      res.status(400).send({ error: "Error on forgot password, try again" });
+      res.status(400).json({ error: "Error on forgot password, try again" });
     }
+  },
+  async changePassword(req: Request, res: Response) {
+    const { password, email } = req.body;
+    const userRepository = getRepository(User);
+
+    const saltRounds = 3;
+    await bcrypt.hash(password, saltRounds, async function (err, hash) {
+      if (err) {
+        console.log(err);
+        return res
+          .status(400)
+          .json({ error: "houve algum erro, tente novamente" });
+      }
+
+      try {
+        const user = await userRepository.findOne({ where: { email } });
+
+        if (!user) {
+          return res.status(400).json({ error: "usuário não encontrado" });
+        }
+
+        await userRepository.update(user.id, { password: hash });
+
+        return res
+          .status(201)
+          .json({ message: "senha atualizada com sucesso!" });
+      } catch (err) {
+        return res
+          .status(400)
+          .json({ error: "Aconteceu algum erro, tente novamente" });
+      }
+    });
   },
 };

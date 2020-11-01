@@ -100,9 +100,13 @@ export const BannerRight = styled.div`
       line-height: 21.82px;
       cursor: pointer;
       outline: none;
+      transition: opacity 0.2s;
       &:disabled {
         opacity: 0.7;
         cursor: not-allowed;
+      }
+      &:hover {
+        opacity: 0.9;
       }
     }
   }
