@@ -3,6 +3,7 @@ import { getRepository } from "typeorm";
 import User from "../models/User";
 import * as Yup from "yup";
 import bcrypt from "bcrypt";
+import mailer from "../modules/mailer";
 
 export default {
   async register(req: Request, res: Response) {
@@ -75,5 +76,33 @@ export default {
     const { username, admin_rights }: any = userDB;
 
     return res.send({ user: { username, admin_rights } });
+  },
+  async forgotPassword(req: Request, res: Response) {
+    console.log("teste");
+    const { email } = req.body;
+    const userRepository = getRepository(User);
+
+    try {
+      const user = await userRepository.findOne({ where: { email } });
+
+      if (!user) {
+        return res.status(400).send({ error: "Usuário não encontrado" });
+      }
+
+      await mailer
+        .sendMail({
+          to: email,
+          from: "piersgroup@gmail.com",
+          subject: "Forgot Password",
+          html: `<a href="http://localhost:3000/change-pasword/${email}">Clique aqui para mudar sua senha</a>`,
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      return res.send(200).send({ message: "email enviado com sucesso" });
+    } catch (err) {
+      res.status(400).send({ error: "Error on forgot password, try again" });
+    }
   },
 };

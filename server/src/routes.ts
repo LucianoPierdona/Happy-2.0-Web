@@ -50,6 +50,9 @@ routes.post("/login", UsersController.login);
 // Get an User
 routes.get("/user/:email", UsersController.show);
 
+// Forgot Password
+routes.post("/forgot-password", UsersController.forgotPassword);
+
 export default routes;
 
 // {
