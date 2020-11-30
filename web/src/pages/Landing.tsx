@@ -12,11 +12,6 @@ import { LandingPage } from "../styles/pages/landing";
 const Landing = () => {
   const token = Cookie.getJSON("token");
 
-  console.log(jwt.decode(token));
-
-  console.log(token, "SJOSNON");
-  console.log(Cookie.getJSON("token"));
-
   return (
     <LandingPage>
       <div className="content-wrapper">
