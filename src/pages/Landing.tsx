@@ -4,8 +4,6 @@ import logoImg from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 import Cookie from "js-cookie";
 
-import jwt from "jsonwebtoken";
-
 import { LandingPage } from "../styles/pages/landing";
 
 // Initial Page
