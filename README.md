@@ -4,6 +4,9 @@
 <h1>Happy</h1>
 <p>Hello, This was a project made with React and React-Native under the supervision from RocketSeat at NextLevelWeek 3° edition</p>
 
+## Live Demo
+### https://inspiring-colden-a976d2.netlify.app/
+
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
@@ -37,13 +40,3 @@ npm run dev
 # or
 yarn dev
 ```
-
-
-# Screenshots Web
-
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme1.png)
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme2.png)
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme3.png)
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme4.png)
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme5.png)
-![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme6.png)
