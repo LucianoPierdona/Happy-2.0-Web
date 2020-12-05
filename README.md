@@ -31,15 +31,6 @@ yarn start
 
 ```
 
-# Usage Back-End
-
-First install the dependencies with
-```
-npm install
-# or
-yarn add
-```
-
 Then run with
 ```
 npm run dev
