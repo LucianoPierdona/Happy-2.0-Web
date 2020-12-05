@@ -56,12 +56,3 @@ yarn dev
 ![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme4.png)
 ![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme5.png)
 ![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme6.png)
-
-# Screenshots Mobile
-<div style="display: block">
-<img src="https://github.com/LucianoPierdona/Happy/blob/main/mobile/assets/readme1.jpeg">
-<img src="https://github.com/LucianoPierdona/Happy/blob/main/mobile/assets/readme2.jpeg">
-<img src="https://github.com/LucianoPierdona/Happy/blob/main/mobile/assets/readme3.jpeg">
-<img src="https://github.com/LucianoPierdona/Happy/blob/main/mobile/assets/readme4.jpeg">
-</div>
-
