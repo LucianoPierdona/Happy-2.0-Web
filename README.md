@@ -1,11 +1,5 @@
-# Happy
-### Projeto Happy ministrado pela Rocketseat na NextLevelWeek
-
-<h1>Happy</h1>
-<p>Hello, This was a project made with React and React-Native under the supervision from RocketSeat at NextLevelWeek 3° edition</p>
-
-## Live Demo
-### https://inspiring-colden-a976d2.netlify.app/
+<h1>ProShop</h1>
+<p>Hello, This was a project made with React and Node.js</p>
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
