@@ -11,7 +11,7 @@
   </a>
 </p>
 
-# Usage
+# Usage Frontend
 
 First Install the components with 
 ```
@@ -26,6 +26,15 @@ npm start
 # or
 yarn start
 
+```
+
+# Usage Backend
+
+First Install the components with
+```
+npm install
+# or
+yarn install
 ```
 
 Then run with
